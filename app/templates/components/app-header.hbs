@@ -1,0 +1,36 @@
+{{#bs-navbar class="navbar custom-navbar pr-4 pl-4 pt-3 pb-3" as |navbar|}}
+  <div class="container">
+    {{#link-to "home" class="navbar-title"}}
+      ZNB Bank
+    {{/link-to}}
+    {{navbar.toggle}}
+    {{#navbar.content align=right}}
+      {{#navbar.nav class="ml-auto" as |nav|}}
+        {{#nav.item class="mr-2"}}
+          {{#nav.link-to "home" class="navigation-link"}}
+            <i class="material-icons">
+              home
+            </i>
+            Home
+          {{/nav.link-to}}
+        {{/nav.item}}
+        {{#nav.item class="mr-2"}}
+          {{#nav.link-to "login" class="navigation-link"}}
+            <i class="material-icons">
+              person
+            </i>
+          Login
+          {{/nav.link-to}}
+        {{/nav.item}}
+        {{#nav.item}}
+          {{#nav.link-to "register" class="navigation-link"}}
+            <i class="material-icons">
+              person_add
+            </i>
+          Register
+          {{/nav.link-to}}
+        {{/nav.item}}
+      {{/navbar.nav}}
+    {{/navbar.content}}
+  </div>
+{{/bs-navbar}}
