@@ -4,33 +4,63 @@
       <div class="card fade-short pb-3">
         <h5 class="card-header text-center">
           <i class="material-icons">
-          person_add
+            person_add
           </i>
           Register
         </h5>
         <div class="card-body">
           <form autocomplete="off" class="pr-3 pl-3">
             <div class="form-group">
-              <label for="nameInput">Name</label>
-              <input type="text" class="form-control" id="nameInput" placeholder="Enter name">
+              <label for="nameInput" class="pointer">Name</label>
+              {{input type="text" value=name class="form-control" id="nameInput" placeholder="Enter name"}}
+              {{#if nameHasError}}
+                <div class="validation-error-message fade-medium mt-1">
+                  {{nameErrorMessage}}
+                </div>
+              {{/if}}
             </div>
             <div class="form-group">
-              <label for="surnameInput">Surname</label>
-              <input type="text" class="form-control" id="surnameInput" placeholder="Enter surname">
+              <label for="surnameInput" class="pointer">Surname</label>
+              {{input type="text" value=surname class="form-control" id="surnameInput" placeholder="Enter surname"}}
+              {{#if surnameHasError}}
+                <div class="validation-error-message fade-medium mt-1">
+                  {{surnameErrorMessage}}
+                </div>
+              {{/if}}
             </div>
             <div class="form-group">
-              <label for="emnailInput">Email address</label>
-              <input type="email" class="form-control" id="emnailInput" aria-describedby="emailHelp" placeholder="Enter email">
+              <label for="emnailInput" class="pointer">Email address</label>
+              {{input type="email" value=email class="form-control" id="emnailInput" aria-describedby="emailHelp" placeholder="Enter email"}}
+              {{#if emailHasError}}
+                <div class="validation-error-message fade-medium mt-1">
+                  {{emailErrorMessage}}
+                </div>
+              {{/if}}
             </div>
             <div class="form-group">
-              <label for="passwordInput">Password</label>
-              <input type="password" class="form-control" id="passwordInput" placeholder="Enter Password">
+              <label for="passwordInput" class="pointer">Password</label>
+              {{input type="password" value=password class="form-control" id="passwordInput" placeholder="Enter Password"}}
+              {{#if passwordHasError}}
+                <div class="validation-error-message fade-medium mt-1">
+                  {{passwordErrorMessage}}
+                </div>
+              {{/if}}
             </div>
             <div class="form-group">
-              <label for="passwordRepeatInput">Repeat Password</label>
-              <input type="password" class="form-control" id="passwordRepeatInput" placeholder="Repeat Password">
+              <label for="passwordRepeatInput" class="pointer">Repeat Password</label>
+              {{input type="password" value=confirmPassword class="form-control" id="passwordRepeatInput" placeholder="Repeat Password"}}
+              {{#if passwordConfirmationHasError}}
+                <div class="validation-error-message fade-medium mt-1">
+                  {{passwordConfirmationErrorMessage}}
+                </div>
+              {{/if}}
             </div>
-            <button class="btn btn-outline-secondary mt-4 pl-4 pr-4 pt-2 pb-2 float-right pointer" type="submit">Register</button>
+            {{#if emailExistsHasError}}
+              <div class="validation-error-message fade-medium mt-1">
+                {{emailExistsErrorMessage}}
+              </div>
+            {{/if}}
+            <button class="btn btn-outline-secondary mt-4 pl-4 pr-4 pt-2 pb-2 float-right pointer" type="submit" {{action "register"}}>Register</button>
           </form>
         </div>
       </div>

@@ -1,0 +1,49 @@
+<table class="table table-bordered fade-medium">
+  <thead>
+    <tr>
+      <th class="col-id-payment">Id</th>
+      <th class="col-id-payment">User ID</th>
+      <th class="col-amount-payment">Amount</th>
+      <th class="col-status-payment">Status</th>
+      <th class="col-date-payment">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model.payments as |payment|}}
+      <tr>
+        <th>{{payment.id}}</th>
+        <td>{{payment.sender}}</td>
+        <td>{{format-price payment.amount}}</td>
+        <td>{{payment.status}}</td>
+        <td class="">{{payment.date}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+<nav aria-label="Page Navigation" class="pt-3">
+  <ul class="pagination">
+    <li class="page-item">
+      <a class="page-link page-link-black pointer" aria-label="Previous" {{action "previousPage"}}>
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    {{#if firstPageFar}}
+      <li class="page-item"><a class="page-link page-link-black pointer" {{action "firstPage"}}>1</a></li>
+      <li class="page-item"><a class="page-link page-link-black cross">...</a></li>
+    {{/if}}
+    <li class="page-item"><a class="page-link page-link-black pointer" {{action "previousPage"}}>{{previousPage}}</a></li>
+    <li class="page-item"><a class="page-link page-link-black pointer">{{currentPage}}</a></li>
+    <li class="page-item"><a class="page-link page-link-black pointer" {{action "nextPage"}}>{{nextPage}}</a></li>
+    {{#if lastPageFar}}
+      <li class="page-item"><a class="page-link page-link-black cross">...</a></li>
+      <li class="page-item"><a class="page-link page-link-black pointer" {{action "lastPage"}}>{{model.pageChecker}}</a></li>
+    {{/if}}
+    <li class="page-item">
+      <a class="page-link page-link-black pointer" aria-label="Next" {{action "nextPage"}}>
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>

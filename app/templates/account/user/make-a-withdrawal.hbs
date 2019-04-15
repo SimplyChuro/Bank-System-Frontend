@@ -1,0 +1,28 @@
+<div class="row mt-5">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 fade-medium">
+    <div class="card fade-short pb-3">
+      <h5 class="card-header text-center">
+        Withdrawal
+      </h5>
+      <div class="card-body">
+        <form autocomplete="off" class="pr-3 pl-3">
+          <div class="form-group">
+            <label for="withdrawalInput" class="pointer">Withdrawal Amount</label>
+            {{input type="number" value=amount class="form-control" id="withdrawalInput" aria-describedby="withdrawalHelp" placeholder="Enter amount"}}
+            {{#if amountHasError}}
+              <div class="validation-error-message fade-medium mt-1">
+                {{amountErrorMessage}}
+              </div>
+            {{/if}}
+          </div>
+          {{#if balanceHasError}}
+            <div class="validation-error-message fade-medium mt-1">
+              {{balanceErrorMessage}}
+            </div>
+          {{/if}}
+          <button class="btn btn-outline-secondary mt-3 pl-4 pr-4 pt-2 pb-2 float-right pointer" type="submit" {{action "withdrawal"}}>Withdraw</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

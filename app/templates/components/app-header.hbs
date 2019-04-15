@@ -1,6 +1,7 @@
 {{#bs-navbar class="navbar custom-navbar pr-4 pl-4 pt-3 pb-3" as |navbar|}}
   <div class="container">
     {{#link-to "home" class="navbar-title"}}
+      <img src="assets/images/logo.png" class="logo"/>
       ZNB Bank
     {{/link-to}}
     {{navbar.toggle}}
@@ -14,22 +15,102 @@
             Home
           {{/nav.link-to}}
         {{/nav.item}}
-        {{#nav.item class="mr-2"}}
-          {{#nav.link-to "login" class="navigation-link"}}
-            <i class="material-icons">
-              person
-            </i>
-          Login
-          {{/nav.link-to}}
-        {{/nav.item}}
-        {{#nav.item}}
-          {{#nav.link-to "register" class="navigation-link"}}
-            <i class="material-icons">
-              person_add
-            </i>
-          Register
-          {{/nav.link-to}}
-        {{/nav.item}}
+        {{#if (is-logged-in customSession.token currentDate)}}
+          {{#nav.dropdown as |dd|}}
+            {{#dd.toggle class="navigation-link"}}
+              <i class="material-icons">
+                person
+              </i>
+              Account
+              <span class="caret"></span>
+            {{/dd.toggle}}
+            {{#dd.menu as |ddm|}}
+              {{#if (is-role "admin")}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.admin.users" 1}}Users{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.admin.deposits" 1}}Deposits{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.admin.withdrawals" 1}}Withdrawals{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.admin.payments" 1}}Payments{{/ddm.link-to}}
+                {{/ddm.item}}
+              {{else if (is-role "moderator")}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.moderator.users" 1}}Users{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.moderator.deposits" 1}}Deposits{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.moderator.withdrawals" 1}}Withdrawals{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.moderator.payments" 1}}Payments{{/ddm.link-to}}
+                {{/ddm.item}}
+              {{else if (is-role "staff")}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.staff.users" 1}}Users{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.staff.deposits" 1}}Deposits{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.staff.withdrawals" 1}}Withdrawals{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.staff.payments" 1}}Payments{{/ddm.link-to}}
+                {{/ddm.item}}
+              {{else}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.user.profile"}}Profile{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.user.deposits" 1}}Deposits{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.user.make-a-deposit"}}Make a Deposit{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.user.withdrawals" 1}}Withdrawals{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.user.make-a-withdrawal"}}Make a Withdrawal{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.user.payments" 1}}Payments{{/ddm.link-to}}
+                {{/ddm.item}}
+                {{#ddm.item}}
+                  {{#ddm.link-to "account.user.make-a-payment"}}Make a Payment{{/ddm.link-to}}
+                {{/ddm.item}}
+              {{/if}}
+              {{ddm.divider}}
+              {{#ddm.item}}
+                <span class="dropdown-item dropdown-link pointer" {{action "logout"}}>Logout</span>
+              {{/ddm.item}}
+            {{/dd.menu}}
+          {{/nav.dropdown}}
+        {{else}}
+          {{#nav.item class="mr-2"}}
+            {{#nav.link-to "login" class="navigation-link"}}
+              <i class="material-icons">
+                person
+              </i>
+            Login
+            {{/nav.link-to}}
+          {{/nav.item}}
+          {{#nav.item}}
+            {{#nav.link-to "register" class="navigation-link"}}
+              <i class="material-icons">
+                person_add
+              </i>
+            Register
+            {{/nav.link-to}}
+          {{/nav.item}}
+        {{/if}}
       {{/navbar.nav}}
     {{/navbar.content}}
   </div>

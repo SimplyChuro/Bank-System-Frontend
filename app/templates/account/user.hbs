@@ -1,0 +1,27 @@
+<div class="row m-0 p-0 mb-5">
+  {{#link-to "account.user.profile" class="btn-c btn-outline-gray pointer mr-2"}}
+    <i class="material-icons">
+      person
+    </i>
+    Profile
+  {{/link-to}}
+  {{#link-to "account.user.deposits" 1 class="btn-c btn-outline-gray pointer mr-2"}}
+    <i class="material-icons">
+      assignment_turned_in
+    </i>
+    Deposits
+  {{/link-to}}
+  {{#link-to "account.user.withdrawals" 1 class="btn-c btn-outline-gray pointer mr-2"}}
+    <i class="material-icons">
+      assignment_returned
+    </i>
+    Withdrawals
+  {{/link-to}}
+  {{#link-to "account.user.payments" 1 class="btn-c btn-outline-gray pointer mr-2"}}
+    <i class="material-icons">
+      assignment_ind
+    </i>
+    Payments
+  {{/link-to}}
+</div>
+{{outlet}}

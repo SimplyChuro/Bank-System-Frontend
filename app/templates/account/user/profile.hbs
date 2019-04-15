@@ -1,0 +1,60 @@
+<div class="card fade-medium">
+  <h5 class="card-header text-center">
+    <i class="material-icons">
+      person
+    </i>
+    Profile
+  </h5>
+  <div class="card-body">
+    <div class="row pl-3 pr-3">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <div class="form-group">
+          <label for="nameInput" class="pointer">Name</label>
+          {{input type="text" value=name class="form-control" id="nameInput" placeholder="Enter name"}}
+          {{#if nameHasError}}
+            <div class="validation-error-message fade-medium mt-1">
+              {{nameErrorMessage}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <div class="form-group">
+          <label for="surnameInput" class="pointer">Surname</label>
+          {{input type="text" value=surname class="form-control" id="surnameInput" placeholder="Enter Surname"}}
+          {{#if surnameHasError}}
+            <div class="validation-error-message fade-medium mt-1">
+              {{surnameErrorMessage}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <div class="form-group">
+          <label class="pointer">Email</label>
+          <p type="text" class="form-control no-drop">{{model.user.email}}</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <div class="form-group">
+          <label for="bankInput" class="pointer">Bank Account</label>
+          {{input type="text" value=bankAccount class="form-control" id="bankInput" placeholder="Enter Surname"}}
+          {{#if bankAccountHasError}}
+            <div class="validation-error-message fade-medium mt-1">
+              {{bankAccountErrorMessage}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <div class="form-group">
+          <label class="pointer">Balance</label>
+          <p type="text" class="form-control no-drop">{{format-price model.user.balance}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="float-right pr-3">
+      <button class="btn btn-outline-secondary pr-3 pl-3 pb-2 pt-2" {{action 'update'}}>Update</button>
+    </div>
+  </div>
+</div>

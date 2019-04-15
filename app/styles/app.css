@@ -98,7 +98,7 @@ ul li {
 
 .seperator-big {
   margin-bottom: 200px;
-  margin-top: 200px; 
+  margin-top: 200px;
 }
 
 .seperator-small {
@@ -106,9 +106,133 @@ ul li {
   margin-top: 125px;
 }
 
+.seperator-xl {
+  margin-bottom: 250px;
+  margin-top: 250px;
+}
+
 .hr-light {
   background: #ffffff;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+.no-drop {
+  cursor: no-drop
+}
+
+.btn-c {
+  display: inline-block;
+  background: #ffffff;
+  margin-bottom: 0;
+  font-weight: 300;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+}
+
+.btn-c:hover {
+  text-decoration: none;
+}
+
+.btn-outline-gray {
+  font-size: 18px;
+  letter-spacing: 0.33px;
+  font-weight: 300;
+  color: #252525;
+  border: 2px solid #D8D8D8;
+}
+
+.btn-outline-gray:hover {
+  background: #D8D8D8;
+  color: #ffffff;
+}
+
+.page-link-black {
+  color: #252525;
+  font-weight: 300;
+}
+
+.col-id {
+  width: 10%;
+}
+
+.col-amount {
+  width: 15%;
+}
+
+.col-status {
+  width: 15%;
+}
+
+.col-date {
+  width: auto;
+}
+
+.col-id-payment {
+  width: 5%;
+}
+
+.col-amount-payment {
+  width: 10%;
+}
+
+.col-status-payment {
+  width: 10%;
+}
+
+.col-date-payment {
+  width: auto;
+}
+
+
+.col-id-admin {
+  width: 5%;
+}
+
+.col-name-admin {
+  width: 15%;
+}
+
+.col-surname-admin {
+  width: 15%;
+}
+
+.col-bank-account-admin {
+  width: 15%;
+}
+
+.col-balance-admin {
+  width: 15%;
+}
+
+.col-status-admin {
+  width: 15%;
+}
+
+.col-controlls-admin {
+  width: 20%;
+}
+
+.text-positive {
+  color: #6CC047;
+  letter-spacing: 0.63px;
+}
+
+.text-negative {
+  color: #A6555F;
+  letter-spacing: 0.63px;
+}
+
 
 /*Generated CSS*/
 .topnav {
@@ -354,6 +478,18 @@ nav .navbar-nav li a{
   color: #5e5e5e !important;
 }
 
+.dropdown-link {
+  color: #5e5e5e !important;
+}
+
+.dropdown-item {
+
+}
+
+.logo {
+  max-height: 45px;
+}
+
 
 /*Footer Panel*/
 
@@ -402,4 +538,40 @@ nav .navbar-nav li a{
 .contact-information-title {
   font-weight: 300;
   font-size: 48px;
+}
+
+
+/*Error Page Design*/
+
+.error-message-holder {
+  display: table;
+  height: 100px;
+  width: 100%;
+  padding: 150px 0px 175px 0px;
+  text-align: center;
+}
+
+.error-cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.error-message-main {
+  font-size: 200px;
+  font-weight: 300;
+}
+
+.error-message-addition {
+  font-size: 40px;
+  font-weight: 300;
+}
+
+.error-back-button {
+  cursor: pointer;
+  color: #252525;
+  font-weight: 300;
+  border: 2px solid #252525;
+  border-radius: 5px;
+  padding: 5px 25px;
+  margin: 0px;
 }
