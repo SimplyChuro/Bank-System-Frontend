@@ -8,6 +8,12 @@ module.exports = function(environment) {
     locationType: 'auto',
     HOST_URL: 'http://localhost:9000',
     SUB_API_ROUTE: 'api/v1',
+    HOST_USER: 'user',
+    HOST_DEPOSIT: 'deposit',
+    HOST_WITHDRAWAL: 'withdrawal',
+    HOST_PAYMENT: 'payment',
+    HOST_PICTURE: 'picture',
+
     EmberENV: {
       FEATURES: { },
       EXTEND_PROTOTYPES: {
@@ -22,12 +28,10 @@ module.exports = function(environment) {
 
   if (environment === 'development') {
     ENV.HOST_URL = 'http://localhost:9000';
-    ENV.SUB_API_ROUTE = 'api/v1';
   }
 
   if (environment === 'production') {
     ENV.HOST_URL = 'http://localhost:9000';
-    ENV.SUB_API_ROUTE = 'api/v1';
   }
 
   return ENV;

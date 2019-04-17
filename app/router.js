@@ -32,6 +32,7 @@ Router.map(function() {
       this.route('deposits', { path: 'deposits/:page' });
       this.route('withdrawals', { path: 'withdrawals/:page' });
       this.route('payments', { path: 'payments/:page' });
+      this.route('edit-user', { path: 'edit-user/:id' });
     });
 
     this.route('moderator', function() {
@@ -39,6 +40,7 @@ Router.map(function() {
       this.route('deposits', { path: 'deposits/:page' });
       this.route('withdrawals', { path: 'withdrawals/:page' });
       this.route('payments', { path: 'payments/:page' });
+      this.route('edit-user', { path: 'edit-user/:id' });
     });
 
     this.route('staff', function() {

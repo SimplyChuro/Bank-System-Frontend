@@ -6,55 +6,92 @@
     Profile
   </h5>
   <div class="card-body">
-    <div class="row pl-3 pr-3">
-      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-        <div class="form-group">
-          <label for="nameInput" class="pointer">Name</label>
-          {{input type="text" value=name class="form-control" id="nameInput" placeholder="Enter name"}}
-          {{#if nameHasError}}
-            <div class="validation-error-message fade-medium mt-1">
-              {{nameErrorMessage}}
+    <div class="row">
+      <div class="offset-lg-1 offset-xl-1 col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5">
+        <div class="profile-avatar-holder">
+          {{#if (is-null model.user.avatar.url)}}
+            <div class="blank-image rounded">
             </div>
+          {{else}}
+            <img src={{model.user.avatar.url}} class="img-fluid rounded profile-avatar ml-auto mr-auto" alt="profile picture">
+            <button class="mt-3 pointer btn btn-outline-secondary w-100" {{action "delete"}}>Delete</button>
           {{/if}}
+          <input onchange={{action "upload"}} accept="image/png,image/jpeg" type="file" class="d-none" id="avatar">
+          <label for="avatar" class="mt-3 pointer btn btn-outline-secondary w-100">Upload</label>
         </div>
       </div>
-      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-        <div class="form-group">
-          <label for="surnameInput" class="pointer">Surname</label>
-          {{input type="text" value=surname class="form-control" id="surnameInput" placeholder="Enter Surname"}}
-          {{#if surnameHasError}}
-            <div class="validation-error-message fade-medium mt-1">
-              {{surnameErrorMessage}}
+      <div class="col-12 col-sm-12 col-md-12 col-lg-5 col-xl-5"> 
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="form-group">
+              <label for="nameInput" class="pointer">Name</label>
+              {{input type="text" value=name class="form-control" id="nameInput" placeholder="Enter name"}}
+              {{#if nameHasError}}
+                <div class="validation-error-message fade-medium mt-1">
+                  {{nameErrorMessage}}
+                </div>
+              {{/if}}
             </div>
-          {{/if}}
-        </div>
-      </div>
-      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-        <div class="form-group">
-          <label class="pointer">Email</label>
-          <p type="text" class="form-control no-drop">{{model.user.email}}</p>
-        </div>
-      </div>
-      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-        <div class="form-group">
-          <label for="bankInput" class="pointer">Bank Account</label>
-          {{input type="text" value=bankAccount class="form-control" id="bankInput" placeholder="Enter Surname"}}
-          {{#if bankAccountHasError}}
-            <div class="validation-error-message fade-medium mt-1">
-              {{bankAccountErrorMessage}}
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-1">
+            <div class="form-group">
+              <label for="surnameInput" class="pointer">Surname</label>
+              {{input type="text" value=surname class="form-control" id="surnameInput" placeholder="Enter Surname"}}
+              {{#if surnameHasError}}
+                <div class="validation-error-message fade-medium mt-1">
+                  {{surnameErrorMessage}}
+                </div>
+              {{/if}}
             </div>
-          {{/if}}
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-1">
+            <div class="form-group">
+              <label for="bankInput" class="pointer">Bank Account</label>
+              {{input type="text" value=bankAccount class="form-control" id="bankInput" placeholder="Enter Surname"}}
+              {{#if bankAccountHasError}}
+                <div class="validation-error-message fade-medium mt-1">
+                  {{bankAccountErrorMessage}}
+                </div>
+              {{/if}}
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-1">
+            <div class="form-group">
+              <label class="pointer">Email</label>
+              <p type="text" class="form-control no-drop">{{model.user.email}}</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-1">
+            <div class="form-group">
+              <label class="pointer">Balance</label>
+              <p type="text" class="form-control no-drop">{{format-price model.user.balance}}</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-1">
+            {{#if newPasswordToggled}}
+              <div class="form-group">
+                <label for="passwordInput" class="pointer">Password</label>
+                {{input type="password" autocomplete="off" value=password  class="form-control" id="passwordInput"}}
+                {{#if passwordHasError}}
+                  <div class="validation-error-message fade-medium mt-1">
+                    {{passwordErrorMessage}}
+                  </div>
+                {{/if}} 
+              </div>  
+            {{else}}
+              <div class="pointer" {{action 'toggleNewPassword'}}>
+                <i class="material-icons">
+                  add
+                </i>
+                <span>Change Password</span>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="float-right">
+          <button class="btn btn-outline-secondary mt-4 mb-4 pb-2 pt-2 pl-3 pr-3" {{action "update"}}>Update</button>
         </div>
       </div>
-      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-        <div class="form-group">
-          <label class="pointer">Balance</label>
-          <p type="text" class="form-control no-drop">{{format-price model.user.balance}}</p>
-        </div>
-      </div>
-    </div>
-    <div class="float-right pr-3">
-      <button class="btn btn-outline-secondary pr-3 pl-3 pb-2 pt-2" {{action 'update'}}>Update</button>
     </div>
   </div>
 </div>

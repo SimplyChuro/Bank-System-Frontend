@@ -1,6 +1,7 @@
+import { inject as service } from '@ember/service';
+
 import DS from 'ember-data';
 import ENV from 'bank-system/config/environment';
-import { inject as service } from '@ember/service';
 
 export default DS.RESTAdapter.extend({
   customSession: service(),

@@ -1,17 +1,18 @@
 import Service from '@ember/service';
 import { isEmpty } from '@ember/utils';
-
-import Cookies from 'ember-cli-js-cookie';
+import { inject as service } from '@ember/service';
 
 export default Service.extend({
+  cookies: service(),
+
   token: null,
   id: null,
   role: null,
 
   getToken: function() {
     var token = null;
-    if(!isEmpty(Cookies.get('token'))) {
-      token = Cookies.get('token');
+    if(!isEmpty(this.get('cookies').read('token'))) {
+      token = this.get('cookies').read('token');
     } else if(!isEmpty(window.localStorage.getItem('token'))) {
       token = window.localStorage.getItem('token');
     }
@@ -20,8 +21,8 @@ export default Service.extend({
   
   getUserID: function() {
     var idNumber = null;
-    if(!isEmpty(Cookies.get('id'))) {
-      idNumber = Cookies.get('id');
+    if(!isEmpty(this.get('cookies').read('id'))) {
+      idNumber = this.get('cookies').read('id');
     } else if(!isEmpty(window.localStorage.getItem('id'))) {
       idNumber = window.localStorage.getItem('id');
     }
@@ -30,8 +31,8 @@ export default Service.extend({
 
   getRole: function() {
     var token = null;
-    if(!isEmpty(Cookies.get('role'))) {
-      token = Cookies.get('role');
+    if(!isEmpty(this.get('cookies').read('role'))) {
+      token = this.get('cookies').read('role');
     } else if(!isEmpty(window.localStorage.getItem('role'))) {
       token = window.localStorage.getItem('role');
     }
@@ -39,7 +40,7 @@ export default Service.extend({
   },
 
   isLoggedIn: function() {
-    if((Cookies.get("SESSION") != null) || (window.localStorage.getItem("SESSION") !== null)) {
+    if((this.get('cookies').read("SESSION") != null) || (window.localStorage.getItem("SESSION") !== null)) {
       return true;
     } else {
       return false;
@@ -47,9 +48,13 @@ export default Service.extend({
   },
 
   setCookieData: function(token, id, role) {
-    Cookies.set('token', token);
-    Cookies.set('id', id);
-    Cookies.set('role', role);
+    this.get('cookies').clear("token");
+    this.get('cookies').clear("id");
+    this.get('cookies').clear("role");
+    
+    this.get('cookies').write('token', token, null);
+    this.get('cookies').write('id', id, null);
+    this.get('cookies').write('role', role, null);
 
     this.set('token', token);
     this.set('id', id);
@@ -58,10 +63,10 @@ export default Service.extend({
 
   clearAll: function() {
     window.localStorage.clear();
-    Cookies.remove("SESSION");
-    Cookies.remove("token");
-    Cookies.remove("id");
-    Cookies.remove("role");
+    this.get('cookies').clear("SESSION");
+    this.get('cookies').clear("token");
+    this.get('cookies').clear("id");
+    this.get('cookies').clear("role");
     
     this.set("token", null);
     this.set("id", null);

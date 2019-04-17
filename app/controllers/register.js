@@ -24,7 +24,7 @@ export default Controller.extend({
 
   registerFormValidation: function() {
     var checker = true;
-    var passwordRegex = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,64}$/);
+    var passwordRegex = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,64}$/);
     var emailRegex = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
       
     if(isEmpty(this.get('name')) || (this.get('name').length != 0 && this.get('name').trim().length == 0) || (this.get('name').length > 100)) {
@@ -57,7 +57,7 @@ export default Controller.extend({
       }
     }
 
-    if(isEmpty(this.get('password')) || (this.get('password').length != 0 && this.get('password').trim().length == 0) || (this.get('name').length > 100)) {
+    if(isEmpty(this.get('password')) || (this.get('password').length != 0 && this.get('password').trim().length == 0) || (this.get('password').length > 100)) {
       this.set('passwordHasError', true);
       this.set('passwordErrorMessage', 'Password can not be blank');
       checker = false;

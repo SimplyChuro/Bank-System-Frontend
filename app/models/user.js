@@ -10,5 +10,6 @@ export default Model.extend({
   bankAccount: DS.attr('string'),
   date: DS.attr('date'),
   balance: DS.attr('number'),
-  roles: DS.hasMany('role')
+  roles: DS.hasMany('role'),
+  avatar: DS.belongsTo('picture')
 });

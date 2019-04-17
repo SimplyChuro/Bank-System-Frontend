@@ -7,7 +7,6 @@
       <th class="col-bank-account-admin">Bank Account</th>
       <th class="col-balance-admin">Balance</th>
       <th class="col-status-admin">Role</th>
-      <th class="col-controls-admin">Controlls</th>
     </tr>
   </thead>
   <tbody>
@@ -23,18 +22,6 @@
             <td>{{role.name}}</td>
           {{/if}}
         {{/each}}
-        <td>
-          <span class="pl-2 pr-2 pointer">
-            <i class="material-icons">
-              create
-            </i>
-          </span>
-          <span class="pointer">
-            <i class="material-icons">
-              close
-            </i>
-          </span>
-        </td>
       </tr>
     {{/each}}
   </tbody>
@@ -42,24 +29,24 @@
 <nav aria-label="Page Navigation" class="pt-3">
   <ul class="pagination">
     <li class="page-item">
-      <a class="page-link page-link-black pointer" aria-label="Previous" {{action "previousPage"}}>
+      <a class="page-link page-link-black pointer" aria-label="Previous" {{action "previousPage"}} role="button">
         <span aria-hidden="true">&laquo;</span>
         <span class="sr-only">Previous</span>
       </a>
     </li>
     {{#if firstPageFar}}
-      <li class="page-item"><a class="page-link page-link-black pointer" {{action "firstPage"}}>1</a></li>
+      <li class="page-item"><a class="page-link page-link-black pointer" {{action "firstPage"}} role="button">1</a></li>
       <li class="page-item"><a class="page-link page-link-black cross">...</a></li>
     {{/if}}
-    <li class="page-item"><a class="page-link page-link-black pointer" {{action "previousPage"}}>{{previousPage}}</a></li>
+    <li class="page-item"><a class="page-link page-link-black pointer" {{action "previousPage"}} role="button">{{previousPage}}</a></li>
     <li class="page-item"><a class="page-link page-link-black pointer">{{currentPage}}</a></li>
-    <li class="page-item"><a class="page-link page-link-black pointer" {{action "nextPage"}}>{{nextPage}}</a></li>
+    <li class="page-item"><a class="page-link page-link-black pointer" {{action "nextPage"}} role="button">{{nextPage}}</a></li>
     {{#if lastPageFar}}
       <li class="page-item"><a class="page-link page-link-black cross">...</a></li>
-      <li class="page-item"><a class="page-link page-link-black pointer" {{action "lastPage"}}>{{model.pageChecker}}</a></li>
+      <li class="page-item"><a class="page-link page-link-black pointer" {{action "lastPage"}} role="button">{{model.pageChecker}}</a></li>
     {{/if}}
     <li class="page-item">
-      <a class="page-link page-link-black pointer" aria-label="Next" {{action "nextPage"}}>
+      <a class="page-link page-link-black pointer" aria-label="Next" {{action "nextPage"}} role="button">
         <span aria-hidden="true">&raquo;</span>
         <span class="sr-only">Next</span>
       </a>

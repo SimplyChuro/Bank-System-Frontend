@@ -1,0 +1,100 @@
+<div class="card fade-medium">
+  <h5 class="card-header text-center">
+    <i class="material-icons">
+      person
+    </i>
+    Profile
+  </h5>
+  <div class="card-body">
+    <div class="row pr-3 pl-3">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <div class="form-group">
+          <label for="nameInput" class="pointer">Name</label>
+          {{input type="text" value=name class="form-control" id="nameInput" placeholder="Enter name"}}
+          {{#if nameHasError}}
+            <div class="validation-error-message fade-medium mt-1">
+              {{nameErrorMessage}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-1">
+        <div class="form-group">
+          <label for="surnameInput" class="pointer">Surname</label>
+          {{input type="text" value=surname class="form-control" id="surnameInput" placeholder="Enter Surname"}}
+          {{#if surnameHasError}}
+            <div class="validation-error-message fade-medium mt-1">
+              {{surnameErrorMessage}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-1">
+        <div class="form-group">
+          <label for="bankInput" class="pointer">Bank Account</label>
+          {{input type="text" value=bankAccount class="form-control" id="bankInput" placeholder="Enter Surname"}}
+          {{#if bankAccountHasError}}
+            <div class="validation-error-message fade-medium mt-1">
+              {{bankAccountErrorMessage}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-1">
+        <div class="form-group">
+          <label for="emailInput" class="pointer">Email</label>
+          {{input type="text" value=email class="form-control" id="emailInput" placeholder="Enter Email"}}
+          {{#if emailHasError}}
+            <div class="validation-error-message fade-medium mt-1">
+              {{emailErrorMessage}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-1">
+        <div class="form-group">
+          <label class="pointer">Balance</label>
+          <p type="text" class="form-control no-drop">{{format-price model.user.balance}}</p>
+        </div>
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-1">
+        {{#if newPasswordToggled}}
+          <div class="form-group">
+            <label for="passwordInput" class="pointer">Password</label>
+            {{input type="password" autocomplete="off" value=password  class="form-control" id="passwordInput"}}
+            {{#if passwordHasError}}
+              <div class="validation-error-message fade-medium mt-1">
+                {{passwordErrorMessage}}
+              </div>
+            {{/if}} 
+          </div>  
+        {{else}}
+          <div class="pointer" {{action "toggleNewPassword"}}>
+            <i class="material-icons">
+              add
+            </i>
+            <span>Change Password</span>
+          </div>
+        {{/if}}
+      </div>
+      {{#if (eq noRole null)}}
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mt-1">
+          <div class="form-check">
+            {{input type="checkbox" checked=moderator class="form-check-input" id="moderatorCheckBoxInput"}}
+            <label class="form-check-label" for="moderatorCheckBoxInput">Moderator</label>
+            <br>
+            {{input type="checkbox" checked=staff class="form-check-input" id="staffCheckBoxInput"}}
+            <label class="form-check-label" for="staffCheckBoxInput">Staff</label>
+            <br>
+            {{input type="checkbox" checked=default class="form-check-input" id="defaultCheckBoxInput"}}
+            <label class="form-check-label" for="defaultCheckBoxInput">Default/User</label>
+          </div>
+        </div>
+      {{/if}}
+    </div>
+    <div class="float-right">
+      <button class="btn btn-outline-secondary mt-4 mb-4 mr-2 pb-2 pt-2 pl-3 pr-3" {{action "back"}}>Back</button>
+      <button class="btn btn-outline-secondary mt-4 mb-4 mr-3 pb-2 pt-2 pl-3 pr-3" {{action "update"}}>Update</button>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 {{#bs-navbar class="navbar custom-navbar pr-4 pl-4 pt-3 pb-3" as |navbar|}}
   <div class="container">
     {{#link-to "home" class="navbar-title"}}
-      <img src="assets/images/logo.png" class="logo"/>
+      <img src="assets/images/logo.png" class="logo" alt="404">
       ZNB Bank
     {{/link-to}}
     {{navbar.toggle}}
@@ -89,7 +89,7 @@
               {{/if}}
               {{ddm.divider}}
               {{#ddm.item}}
-                <span class="dropdown-item dropdown-link pointer" {{action "logout"}}>Logout</span>
+                <span class="dropdown-item dropdown-link pointer" {{action "logout"}} role="button">Logout</span>
               {{/ddm.item}}
             {{/dd.menu}}
           {{/nav.dropdown}}
