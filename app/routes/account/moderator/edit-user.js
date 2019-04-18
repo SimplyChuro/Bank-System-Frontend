@@ -1,9 +1,9 @@
-import Route from '@ember/routing/route';
+import ApplicationRoute from '../../../routes/application';
 import { inject as service } from '@ember/service';
 import { isEqual } from '@ember/utils';
 import { hash } from 'rsvp';
 
-export default Route.extend({
+export default ApplicationRoute.extend({
   customSession: service(),
 
   model(params) {

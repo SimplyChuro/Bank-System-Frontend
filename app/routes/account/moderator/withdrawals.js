@@ -1,10 +1,10 @@
-import Route from '@ember/routing/route';
+import ApplicationRoute from '../../../routes/application';
 import { hash } from 'rsvp';
 
 import ENV from 'bank-system/config/environment';
 import $ from 'jquery';
 
-export default Route.extend({
+export default ApplicationRoute.extend({
   model(params) {
     return hash({
       pageChecker: $.ajax({

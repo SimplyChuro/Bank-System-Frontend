@@ -1,6 +1,6 @@
-import Route from '@ember/routing/route';
+import ApplicationRoute from '../../../routes/application';
 
-export default Route.extend({
+export default ApplicationRoute.extend({
   actions: {
     willTransition: function() {
       this.controllerFor('account/user/make-a-withdrawal').send('clear');
